@@ -7,8 +7,8 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Jost:ital,wght@0,100..900;1,100..900&family=Lavishly+Yours&family=Stalemate&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Jost:ital,wght@0,100..900;1,100..900&family=Lavishly+Yours&family=Stalemate&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -49,109 +49,97 @@
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
+      text-align: center;
     }
 
-    /* Rubrik med Ephesis */
+    /* Rubrik */
     .content h2 {
-      text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       font-size: 4rem;
       color: #1a1a1a;
       font-weight: normal;
-      font-family: 'Lavishly Yours';
+      font-family: 'Lavishly Yours', cursive;
     }
 
-    /* Underrubriker */
+    /* Underrubriker och textblock */
+    .column {
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .column h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
       font-weight: 600;
-      text-align: center;
       color: #1a1a1a;
-    }
-
-    .columns {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-
-    .column {
-      flex: 1;
-      min-width: 280px;
     }
 
     .column p {
       font-size: 1rem;
-      text-align: center;
       color: #1a1a1a;
     }
 
     /* Gallery */
     .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.gallery-item {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4; /* 💡 detta skapar 3:4-formen */
-  overflow: hidden;
-  border-radius: 10px;
-}
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 10px;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
   </style>
 </head>
 <body>
 
   <!-- Fullscreen video -->
-<div class="video-container">
-  <iframe
-    src="https://www.youtube.com/embed/CQG8bRDr5X0?autoplay=1&mute=1&loop=1&playlist=CQG8bRDr5X0&controls=0&modestbranding=1&rel=0"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
-</div>
-
-  <!-- Info section with two columns -->
-<!-- Info section stacked vertically -->
-<div class="content">
-  <h2>Save the Date</h2>
-
-  <div class="column">
-    <h3>Plats & Tid</h3>
-    <p>Vi skall gifta oss den 12 juni, 2025, i närheten av Borås. Vi önskar att ni bokar in detta datumet och vill vara med och fira vår kärlek.</p>
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/CQG8bRDr5X0?autoplay=1&mute=1&loop=1&playlist=CQG8bRDr5X0&controls=0&modestbranding=1&rel=0"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
   </div>
-&nbsp;
-  &nbsp;
-  <div class="column">
-    <h3>Information</h3>
-    <p>Detta är enbart en save the date och ni kommer få en hel del mer uppdateringar innan den stora dagen. Signa gärna upp er på vårat nyhetsbrev för att ta del av "bakom kulisserna", samt uppdateringar om klädkod, rsvp, etc. Vi kommer att uppdatera denna sidan också när det är närmar sig.</p>
-  </div>
-</div>
 
-  <!-- Photo gallery -->
+  <!-- Save the Date Text -->
+  <div class="content">
+    <h2>Save the Date</h2>
+
+    <div class="column">
+      <h3>Plats & Tid</h3>
+      <p>Vi skall gifta oss den 12 juni, 2025, i närheten av Borås. Vi önskar att ni bokar in detta datumet och vill vara med och fira vår kärlek.</p>
+    </div>
+
+    <div class="column">
+      <h3>Information</h3>
+      <p>Detta är enbart en save the date och ni kommer få en hel del mer uppdateringar innan den stora dagen. Signa gärna upp er på vårat nyhetsbrev för att ta del av "bakom kulisserna", samt uppdateringar om klädkod, rsvp, etc. Vi kommer att uppdatera denna sidan också när det närmar sig.</p>
+    </div>
+  </div>
+
+  <!-- Photo Gallery -->
   <div class="gallery">
-     <div class="gallery-item"><img src="brollop1.jpg" alt="Bild 1">
-     <div class="gallery-item"><img src="brollop5.jpg" alt="Bild 2">
-     <div class="gallery-item"><img src="brollop3.jpg" alt="Bild 3">
-     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4">
+    <div class="gallery-item"><img src="brollop1.jpg" alt="Bild 1"></div>
+    <div class="gallery-item"><img src="brollop5.jpg" alt="Bild 2"></div>
+    <div class="gallery-item"><img src="brollop3.jpg" alt="Bild 3"></div>
+    <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4"></div>
   </div>
 
 </body>
