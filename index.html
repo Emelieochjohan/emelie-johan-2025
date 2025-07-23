@@ -91,32 +91,43 @@
 
     /* Gallery */
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
+.gallery-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* 💡 detta skapar 3:4-formen */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
     }
   </style>
 </head>
 <body>
 
   <!-- Fullscreen video -->
-  <div class="video-container">
-    <iframe
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&modestbranding=1&rel=0"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-  </div>
+<div class="video-container">
+  <iframe
+    src="https://www.youtube.com/embed/CQG8bRDr5X0?autoplay=1&mute=1&loop=1&playlist=CQG8bRDr5X0&controls=0&modestbranding=1&rel=0"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
 
   <!-- Info section with two columns -->
 <!-- Info section stacked vertically -->
@@ -137,10 +148,10 @@
 
   <!-- Photo gallery -->
   <div class="gallery">
-    <img src="brollop1.jpg" alt="Bild 1">
-    <img src="brollop5.jpg" alt="Bild 2">
-    <img src="brollop3.jpg" alt="Bild 3">
-    <img src="brollop4.jpg" alt="Bild 4">
+     <div class="gallery-item"><img src="brollop1.jpg" alt="Bild 1">
+     <div class="gallery-item"><img src="brollop5.jpg" alt="Bild 2">
+     <div class="gallery-item"><img src="brollop3.jpg" alt="Bild 3">
+     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4">
   </div>
 
 </body>
