@@ -8,7 +8,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Jost:ital,wght@0,100..900;1,100..900&family=Lavishly+Yours&family=Stalemate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Jost:ital,wght@0,100..900;1,100..900&family=Lavishly+Yours&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -22,6 +22,7 @@
       line-height: 1.6;
       background-color: #fefefe;
       color: #1a1a1a;
+      text-align: center;
     }
 
     /* Fullscreen video */
@@ -32,55 +33,48 @@
       overflow: hidden;
     }
 
-   .video-container iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  pointer-events: auto;
-}
-
+    .video-container iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
     }
 
-    /* Content section */
+    /* Text content */
     .content {
       padding: 4rem 2rem;
-      max-width: 1200px;
+      max-width: 900px;
       margin: auto;
-      text-align: center;
     }
 
-    /* Rubrik */
-    .content h2 {
-      margin-bottom: 3rem;
-      font-size: 4rem;
-      color: #1a1a1a;
-      font-weight: normal;
+    h2 {
       font-family: 'Lavishly Yours', cursive;
-    }
-
-    /* Underrubriker och textblock */
-    .column {
+      font-size: 4rem;
       margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      font-weight: normal;
+      color: #1a1a1a;
     }
 
-    .column h3 {
+    h3 {
       font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
       font-weight: 600;
       color: #1a1a1a;
     }
 
-    .column p {
+    p {
       font-size: 1rem;
-      color: #1a1a1a;
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Gallery */
@@ -94,8 +88,6 @@
     }
 
     .gallery-item {
-      position: relative;
-      width: 100%;
       aspect-ratio: 3 / 4;
       overflow: hidden;
       border-radius: 10px;
@@ -111,32 +103,28 @@
 </head>
 <body>
 
-  <!-- Fullscreen video -->
+  <!-- Video -->
   <div class="video-container">
     <iframe
-      src="https://www.youtube.com/embed/CQG8bRDr5X0?autoplay=1&mute=1&loop=1&playlist=CQG8bRDr5X0&controls=0&modestbranding=1&rel=0"
+      src="https://www.youtube.com/embed/CQG8bRDr5X0?autoplay=1&mute=1&loop=1&playlist=CQG8bRDr5X0&controls=1&modestbranding=1&rel=0"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen>
     </iframe>
   </div>
 
-  <!-- Save the Date Text -->
+  <!-- Text Info -->
   <div class="content">
     <h2>Save the Date</h2>
 
-    <div class="column">
-      <h3>Plats & Tid</h3>
-      <p>Vi skall gifta oss den 12 juni, 2025, i närheten av Borås. Vi önskar att ni bokar in detta datumet och vill vara med och fira vår kärlek.</p>
-    </div>
+    <h3>Plats & Tid</h3>
+    <p>Vi skall gifta oss den 12 juni, 2025, i närheten av Borås. Vi önskar att ni bokar in detta datumet och vill vara med och fira vår kärlek.</p>
 
-    <div class="column">
-      <h3>Information</h3>
-      <p>Detta är enbart en save the date och ni kommer få en hel del mer uppdateringar innan den stora dagen. Signa gärna upp er på vårat nyhetsbrev för att ta del av "bakom kulisserna", samt uppdateringar om klädkod, rsvp, etc. Vi kommer att uppdatera denna sidan också när det närmar sig.</p>
-    </div>
+    <h3>Information</h3>
+    <p>Detta är enbart en save the date och ni kommer få en hel del mer uppdateringar innan den stora dagen. Signa gärna upp er på vårat nyhetsbrev för att ta del av "bakom kulisserna", samt uppdateringar om klädkod, rsvp, etc. Vi kommer att uppdatera denna sidan också när det närmar sig.</p>
   </div>
 
-  <!-- Photo Gallery -->
+  <!-- Galleri -->
   <div class="gallery">
     <div class="gallery-item"><img src="brollop1.jpg" alt="Bild 1"></div>
     <div class="gallery-item"><img src="brollop5.jpg" alt="Bild 2"></div>
