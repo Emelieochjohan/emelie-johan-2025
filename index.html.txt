@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emelie & Johans Bröllop</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #b76e79;
+    }
+    video {
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Save the Date!</h1>
+  <p>Emelie & Johan gifter sig den 6 september 2025 💍</p>
+
+  <!-- Videon här -->
+  <video controls>
+    <source src="save-the-date.mp4" type="video/mp4">
+    Din webbläsare stödjer inte videouppspelning.
+  </video>
+
+  <p>Mer information kommer snart här!</p>
+</body>
+</html>
