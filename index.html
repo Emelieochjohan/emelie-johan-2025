@@ -33,7 +33,7 @@
       overflow: hidden;
     }
 
-    .video-container iframe {
+    .video-container video {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -42,7 +42,21 @@
       width: auto;
       height: auto;
       transform: translate(-50%, -50%);
-      pointer-events: auto;
+      object-fit: cover;
+    }
+
+    /* Knapp för ljud */
+    .unmute-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.8);
+      cursor: pointer;
     }
 
     /* Text content */
@@ -78,11 +92,10 @@
     }
 
     .header-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 2rem;
-}
-
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 2rem;
+    }
 
     /* Gallery */
     .gallery {
@@ -110,15 +123,15 @@
 </head>
 <body>
 
-<div class="video-container">
-  <iframe
-    src="https://www.youtube.com/embed/O8rDwCRIdt8?controls=1&modestbranding=1&rel=0"
-    frameborder="0"
-    allow="encrypted-media"
-    allowfullscreen>
-  </iframe>
-</div>
-
+  <!-- Videon -->
+  <div class="video-container">
+    <!-- Byt ut FILNAMN.mp4 mot namnet på din fil i GitHub-repot -->
+    <video id="myVideo" autoplay muted loop>
+      <source src="SOUND ON_2.mp4" type="video/mp4">
+      Din webbläsare stöder inte video.
+    </video>
+    <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
+  </div>
 
   <!-- Text Info -->
   <div class="content">
@@ -139,9 +152,13 @@
     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4"></div>
   </div>
 
+  <script>
+    function enableSound() {
+      const video = document.getElementById("myVideo");
+      video.muted = false;
+      video.play();
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-
