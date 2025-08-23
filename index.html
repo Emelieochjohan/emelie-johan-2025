@@ -42,25 +42,16 @@
       min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      display: none;
+      background-color: black;
     }
 
-    /* Desktop video syns bara på desktop */
-    #desktopVideo {
-      display: block;
-    }
-
-    #mobileVideo {
-      display: none;
-    }
+    /* Visa desktop-video endast på desktop */
+    #desktopVideo { display: block; }
+    #mobileVideo { display: none; }
 
     @media (max-width: 768px) {
-      #desktopVideo {
-        display: none;
-      }
-      #mobileVideo {
-        display: block;
-      }
+      #desktopVideo { display: none; }
+      #mobileVideo { display: block; }
     }
 
     /* Knapp för att slå på ljud på desktop */
@@ -78,7 +69,7 @@
       z-index: 2;
     }
 
-    /* Play-knapp på mobil */
+    /* Play-knapp för mobil */
     .play-btn {
       position: absolute;
       top: 50%;
@@ -95,12 +86,10 @@
     }
 
     @media (max-width: 768px) {
-      .play-btn {
-        display: block;
-      }
+      .play-btn { display: block; }
     }
 
-    /* Brevbilden */
+    /* Brevbild */
     .letter-image {
       display: block;
       margin: 2rem auto;
@@ -109,9 +98,7 @@
     }
 
     @media (max-width: 768px) {
-      .letter-image {
-        width: 90%;
-      }
+      .letter-image { width: 90%; }
     }
 
     /* Text content */
@@ -176,13 +163,13 @@
   <div class="video-container">
     <!-- Desktopvideo -->
     <video id="desktopVideo" autoplay muted playsinline loop>
-      <source src="https://drive.google.com/uc?export=download&id=1eTT9o81sdpdEvyYdcoIb-oo4Rt1S2deE" type="video/mp4">
+      <source src="https://drive.google.com/uc?export=download&id=1RVtW0viwcb6pOPPBJQWHFF4lQTW_nfWc" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
 
     <!-- Mobilvideo -->
     <video id="mobileVideo" playsinline>
-      <source src="https://drive.google.com/uc?export=download&id=1TQj4YnW7p7QmE5mieZ-pPd6s9Y1q6T30" type="video/mp4">
+      <source src="https://drive.google.com/uc?export=download&id=1eqAhaUn9ikyIvc3A5Lr0i9atzF2LAxQU" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
 
