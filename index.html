@@ -25,7 +25,7 @@
       text-align: center;
     }
 
-    /* Video-container */
+    /* Videokontainer */
     .video-container {
       position: relative;
       width: 100%;
@@ -34,59 +34,19 @@
       background-color: black;
     }
 
-    .video-container video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      background-color: black;
+    /* Desktop-video syns bara på desktop */
+    #desktopVideoWrapper {
+      display: block;
     }
 
-    /* Visa desktop-video endast på desktop */
-    #desktopVideo { display: block; }
-    #mobileVideo { display: none; }
-
-    @media (max-width: 768px) {
-      #desktopVideo { display: none; }
-      #mobileVideo { display: block; }
-    }
-
-    /* Knapp för att slå på ljud på desktop */
-    .unmute-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    /* Play-knapp för mobil */
-    .play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px 40px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.85);
-      cursor: pointer;
-      z-index: 3;
+    /* Mobil-video syns bara på mobil */
+    #mobileVideoWrapper {
       display: none;
     }
 
     @media (max-width: 768px) {
-      .play-btn { display: block; }
+      #desktopVideoWrapper { display: none; }
+      #mobileVideoWrapper { display: block; }
     }
 
     /* Brevbild */
@@ -161,23 +121,32 @@
 
   <!-- Videon -->
   <div class="video-container">
-    <!-- Desktopvideo -->
-    <video id="desktopVideo" autoplay muted playsinline loop>
-      <source src="https://drive.google.com/uc?export=download&id=1RVtW0viwcb6pOPPBJQWHFF4lQTW_nfWc" type="video/mp4">
-      Din webbläsare stöder inte video.
-    </video>
 
-    <!-- Mobilvideo -->
-    <video id="mobileVideo" playsinline>
-      <source src="https://drive.google.com/uc?export=download&id=1eqAhaUn9ikyIvc3A5Lr0i9atzF2LAxQU" type="video/mp4">
-      Din webbläsare stöder inte video.
-    </video>
+    <!-- Desktop-video -->
+    <div id="desktopVideoWrapper">
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe 
+          src="https://player.vimeo.com/video/1112562986?autoplay=1&muted=1&loop=1&background=1" 
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+          title="SOUND_ON_DESKTOP">
+        </iframe>
+      </div>
+    </div>
 
-    <!-- Ljudknapp desktop -->
-    <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
-
-    <!-- Play-knapp mobil -->
-    <button class="play-btn" id="playBtn">▶️ Spela video</button>
+    <!-- Mobil-video -->
+    <div id="mobileVideoWrapper">
+      <div style="padding:177.78% 0 0 0;position:relative;">
+        <iframe 
+          src="https://player.vimeo.com/video/1112562978?autoplay=0&muted=0" 
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+          title="SOUND_ON_MOBILE">
+        </iframe>
+      </div>
+    </div>
   </div>
 
   <!-- Brevbild -->
@@ -202,23 +171,8 @@
     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4"></div>
   </div>
 
-  <script>
-    // Slå på ljud på desktop
-    function enableSound() {
-      const desktopVideo = document.getElementById("desktopVideo");
-      desktopVideo.muted = false;
-      desktopVideo.play();
-    }
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
 
-    // Play-knapp för mobil med ljud
-    const playBtn = document.getElementById("playBtn");
-    const mobileVideo = document.getElementById("mobileVideo");
-
-    playBtn.addEventListener("click", () => {
-      mobileVideo.play();
-      mobileVideo.muted = false;
-      playBtn.style.display = "none"; // Dölj knappen när videon spelas
-    });
-  </script>
 </body>
 </html>
