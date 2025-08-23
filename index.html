@@ -42,35 +42,52 @@
       min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      background-color: black;
     }
 
-    /* Play-knappen */
-    .play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 18px 36px;
-      font-size: 18px;
-      font-weight: bold;
-      background-color: rgba(255, 255, 255, 0.85);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      display: none; /* döljs på desktop */
-      z-index: 2;
-      transition: background-color 0.3s ease;
+    /* Döljer mobilvideo på desktop och tvärtom */
+    .desktop-video {
+      display: block;
     }
 
-    .play-btn:hover {
-      background-color: rgba(255, 255, 255, 1);
+    .mobile-video {
+      display: none;
     }
 
-    /* Visa knappen bara på mobil */
     @media (max-width: 768px) {
-      .play-btn {
+      .desktop-video {
+        display: none;
+      }
+      .mobile-video {
         display: block;
+      }
+    }
+
+    /* Knapp för ljud */
+    .unmute-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Brevbilden */
+    .letter-image {
+      display: block;
+      margin: 2rem auto;
+      width: 60%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .letter-image {
+        width: 90%;
       }
     }
 
@@ -106,20 +123,6 @@
       margin-right: auto;
     }
 
-    /* Brevbilden */
-    .brevbanner {
-      display: block;
-      width: 60%;  /* Desktop */
-      height: auto;
-      margin: 30px auto;
-    }
-
-    @media (max-width: 768px) {
-      .brevbanner {
-        width: 90%; /* Mobil */
-      }
-    }
-
     /* Gallery */
     .gallery {
       display: grid;
@@ -148,29 +151,32 @@
       width: 100%;
       height: 300px;
       background-color: #000000;
-      margin-top: 40px;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Videon -->
-  <div class="video-container">
-    <video id="myVideo" playsinline loop>
-      <!-- Desktop-video -->
-      <source src="SOUND_ON_2_komp.mp4" type="video/mp4" media="(min-width: 769px)">
-      <!-- Mobil-video -->
-      <source src="SOUND_ON_MOBILE_komp.mp4" type="video/mp4" media="(max-width: 768px)">
+  <!-- Videon för desktop -->
+  <div class="video-container desktop-video">
+    <video id="desktopVideo" autoplay muted playsinline>
+      <source src="SOUND_ON_2_komp.mp4" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
-    <button class="play-btn" id="playBtn">▶ Spela video</button>
+    <button class="unmute-btn" onclick="enableSound('desktopVideo')">🔊 Slå på ljud</button>
+  </div>
+
+  <!-- Videon för mobil -->
+  <div class="video-container mobile-video">
+    <video id="mobileVideo" autoplay muted playsinline>
+      <source src="SOUND_ON_MOBILE_komp.mp4" type="video/mp4">
+      Din webbläsare stöder inte video.
+    </video>
+    <button class="unmute-btn" onclick="enableSound('mobileVideo')">🔊 Slå på ljud</button>
   </div>
 
   <!-- Brevbilden -->
-  <img src="BREV_HEMSIDA.png" alt="Brev" class="brevbanner">
-
-  <!-- Hero low banner placeholder -->
-  <div class="hero-low-banner"></div>
+  <img src="BREV_HEMSIDA.png" alt="Brev" class="letter-image">
 
   <!-- Text Info -->
   <div class="content">
@@ -191,25 +197,15 @@
     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4"></div>
   </div>
 
+  <!-- Hero low banner -->
+  <div class="hero-low-banner"></div>
+
   <script>
-    const video = document.getElementById("myVideo");
-    const playBtn = document.getElementById("playBtn");
-
-    // Desktop → autoplay utan ljud
-    if (window.innerWidth > 768) {
-      video.autoplay = true;
-      video.muted = true;
-      video.play();
-    }
-
-    // Mobil → starta video med ljud när man trycker på play
-    playBtn.addEventListener("click", () => {
+    function enableSound(videoId) {
+      const video = document.getElementById(videoId);
       video.muted = false;
       video.play();
-      playBtn.style.display = "none";
-    });
+    }
   </script>
-
 </body>
 </html>
-
