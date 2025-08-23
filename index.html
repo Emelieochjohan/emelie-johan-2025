@@ -25,7 +25,7 @@
       text-align: center;
     }
 
-    /* Fullscreen video */
+/* Fullscreen video */
 .video-container {
   position: relative;
   width: 100%;
@@ -45,28 +45,42 @@
   background-color: black;
 }
 
-/* Gör videon något högre på små mobiler */
+/* Play-knappen */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: none; /* döljs på desktop */
+  z-index: 2;
+  transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Visa knappen bara på mobil */
 @media (max-width: 768px) {
-  .video-container {
-    height: 100vh; /* fortfarande full höjd */
+  .play-btn {
+    display: block;
   }
 }
 
+/* Desktop autoplay utan ljud */
+@media (min-width: 769px) {
+  .play-btn {
+    display: none;
+  }
+}
 
-    /* Knapp för ljud */
-    .unmute-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      z-index: 2;
-    }
 
     /* Bilden under videon */
     .fullwidth-image {
@@ -150,14 +164,16 @@
 
 <!-- Videon -->
 <div class="video-container">
-  <video id="myVideo" autoplay muted playsinline loop>
+  <video id="myVideo" playsinline loop>
     <!-- Desktop-video -->
     <source src="SOUND_ON_2.mp4" type="video/mp4" media="(min-width: 769px)">
     <!-- Mobil-video -->
     <source src="SOUND_ON_MOBILE.mp4" type="video/mp4" media="(max-width: 768px)">
     Din webbläsare stöder inte video.
   </video>
-  <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
+
+  <!-- Play-knapp (visas bara på mobil) -->
+  <button class="play-btn" id="playBtn">▶ Spela video</button>
 </div>
 
 
@@ -194,7 +210,27 @@
   </script>
 
 </body>
+<script>
+  const video = document.getElementById("myVideo");
+  const playBtn = document.getElementById("playBtn");
+
+  // Desktop → autoplay utan ljud
+  if (window.innerWidth > 768) {
+    video.autoplay = true;
+    video.muted = true;
+    video.play();
+  }
+
+  // Mobil → visa play-knapp, spela video med ljud
+  playBtn.addEventListener("click", () => {
+    video.muted = false;
+    video.play();
+    playBtn.style.display = "none"; // göm knappen
+  });
+</script>
+
 </html>
+
 
 
 
