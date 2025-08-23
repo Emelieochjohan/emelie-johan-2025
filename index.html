@@ -25,7 +25,7 @@
       text-align: center;
     }
 
-    /* Fullscreen video */
+    /* Video-container */
     .video-container {
       position: relative;
       width: 100%;
@@ -42,10 +42,10 @@
       min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      display: none; /* Default, vi styr via media queries */
+      display: none;
     }
 
-    /* Desktop-video visas bara på desktop */
+    /* Desktop video syns bara på desktop */
     #desktopVideo {
       display: block;
     }
@@ -54,7 +54,6 @@
       display: none;
     }
 
-    /* På mobil visas bara mobilversionen */
     @media (max-width: 768px) {
       #desktopVideo {
         display: none;
@@ -64,7 +63,7 @@
       }
     }
 
-    /* Knapp för ljud */
+    /* Knapp för att slå på ljud på desktop */
     .unmute-btn {
       position: absolute;
       bottom: 20px;
@@ -77,6 +76,28 @@
       background: rgba(255, 255, 255, 0.8);
       cursor: pointer;
       z-index: 2;
+    }
+
+    /* Play-knapp på mobil */
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      cursor: pointer;
+      z-index: 3;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .play-btn {
+        display: block;
+      }
     }
 
     /* Brevbilden */
@@ -147,36 +168,32 @@
       object-fit: cover;
       display: block;
     }
-
-    /* Hero low banner */
-    .hero-low-banner {
-      width: 100%;
-      height: 300px;
-      background-color: #000000;
-      margin-top: 2rem;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Videon för desktop -->
+  <!-- Videon -->
   <div class="video-container">
-    <video id="desktopVideo" autoplay muted playsinline>
+    <!-- Desktopvideo -->
+    <video id="desktopVideo" autoplay muted playsinline loop>
       <source src="https://drive.google.com/uc?export=download&id=1eTT9o81sdpdEvyYdcoIb-oo4Rt1S2deE" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
 
-    <!-- Videon för mobil -->
-    <video id="mobileVideo" autoplay muted playsinline>
+    <!-- Mobilvideo -->
+    <video id="mobileVideo" playsinline>
       <source src="https://drive.google.com/uc?export=download&id=1TQj4YnW7p7QmE5mieZ-pPd6s9Y1q6T30" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
 
-    <!-- Ljudknapp -->
+    <!-- Ljudknapp desktop -->
     <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
+
+    <!-- Play-knapp mobil -->
+    <button class="play-btn" id="playBtn">▶️ Spela video</button>
   </div>
 
-  <!-- Brevbilden -->
+  <!-- Brevbild -->
   <img src="BREV_HEMSIDA.png" alt="Brev" class="letter-image">
 
   <!-- Text Info -->
@@ -198,22 +215,23 @@
     <div class="gallery-item"><img src="brollop4.jpg" alt="Bild 4"></div>
   </div>
 
-  <!-- Hero low banner -->
-  <div class="hero-low-banner"></div>
-
   <script>
+    // Slå på ljud på desktop
     function enableSound() {
       const desktopVideo = document.getElementById("desktopVideo");
-      const mobileVideo = document.getElementById("mobileVideo");
-
-      if (window.innerWidth > 768) {
-        desktopVideo.muted = false;
-        desktopVideo.play();
-      } else {
-        mobileVideo.muted = false;
-        mobileVideo.play();
-      }
+      desktopVideo.muted = false;
+      desktopVideo.play();
     }
+
+    // Play-knapp för mobil med ljud
+    const playBtn = document.getElementById("playBtn");
+    const mobileVideo = document.getElementById("mobileVideo");
+
+    playBtn.addEventListener("click", () => {
+      mobileVideo.play();
+      mobileVideo.muted = false;
+      playBtn.style.display = "none"; // Dölj knappen när videon spelas
+    });
   </script>
 </body>
 </html>
