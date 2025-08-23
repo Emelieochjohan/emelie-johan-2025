@@ -42,22 +42,24 @@
       min-height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
+      display: none; /* Default, vi styr via media queries */
     }
 
-    /* Döljer mobilvideo på desktop och tvärtom */
-    .desktop-video {
+    /* Desktop-video visas bara på desktop */
+    #desktopVideo {
       display: block;
     }
 
-    .mobile-video {
+    #mobileVideo {
       display: none;
     }
 
+    /* På mobil visas bara mobilversionen */
     @media (max-width: 768px) {
-      .desktop-video {
+      #desktopVideo {
         display: none;
       }
-      .mobile-video {
+      #mobileVideo {
         display: block;
       }
     }
@@ -158,21 +160,20 @@
 <body>
 
   <!-- Videon för desktop -->
-  <div class="video-container desktop-video">
+  <div class="video-container">
     <video id="desktopVideo" autoplay muted playsinline>
-      <source src="SOUND_ON_2_komp.mp4" type="video/mp4">
+      <source src="https://drive.google.com/uc?export=download&id=1eTT9o81sdpdEvyYdcoIb-oo4Rt1S2deE" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
-    <button class="unmute-btn" onclick="enableSound('desktopVideo')">🔊 Slå på ljud</button>
-  </div>
 
-  <!-- Videon för mobil -->
-  <div class="video-container mobile-video">
+    <!-- Videon för mobil -->
     <video id="mobileVideo" autoplay muted playsinline>
-      <source src="SOUND_ON_MOBILE_komp.mp4" type="video/mp4">
+      <source src="https://drive.google.com/uc?export=download&id=1TQj4YnW7p7QmE5mieZ-pPd6s9Y1q6T30" type="video/mp4">
       Din webbläsare stöder inte video.
     </video>
-    <button class="unmute-btn" onclick="enableSound('mobileVideo')">🔊 Slå på ljud</button>
+
+    <!-- Ljudknapp -->
+    <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
   </div>
 
   <!-- Brevbilden -->
@@ -201,10 +202,17 @@
   <div class="hero-low-banner"></div>
 
   <script>
-    function enableSound(videoId) {
-      const video = document.getElementById(videoId);
-      video.muted = false;
-      video.play();
+    function enableSound() {
+      const desktopVideo = document.getElementById("desktopVideo");
+      const mobileVideo = document.getElementById("mobileVideo");
+
+      if (window.innerWidth > 768) {
+        desktopVideo.muted = false;
+        desktopVideo.play();
+      } else {
+        mobileVideo.muted = false;
+        mobileVideo.play();
+      }
     }
   </script>
 </body>
