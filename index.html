@@ -60,18 +60,19 @@
     }
 
     /* Bilden under videon */
-    .fullwidth-image {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
+.fullwidth-image {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-    .brevbanner {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-top: 20px; /* 🔹 lite spacing mellan video och bild */
-    }
+.brevbanner {
+  display: block;
+  width: 70%;         /* 🔹 ca 30% mindre än fullbredd */
+  height: auto;
+  margin: 30px auto;  /* 🔹 spacing ovan och under */
+}
+
 
     /* Text content */
     .content {
@@ -137,19 +138,19 @@
 </head>
 <body>
 
-  <!-- Videon -->
-  <div class="video-container">
-    <video id="myVideo" autoplay muted>
-      <source src="SOUND_ON_2.mp4" type="video/mp4">
-      Din webbläsare stöder inte video.
-    </video>
-    <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
-  </div>
+<!-- Videon -->
+<div class="video-container">
+  <video id="myVideo" autoplay muted playsinline>
+    <source src="SOUND_ON_2.mp4" type="video/mp4">
+    Din webbläsare stöder inte video.
+  </video>
+  <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
+</div>
 
-  <!-- Brevbild under videon -->
-  <div class="fullwidth-image">
-    <img src="BREV_HEMSIDA.png" alt="Brev" class="brevbanner">
-  </div>
+<!-- Brevbild under videon -->
+<div class="fullwidth-image">
+  <img src="BREV_HEMSIDA.png" alt="Brev" class="brevbanner">
+</div>
 
   <!-- Text Info -->
   <div class="content">
@@ -180,3 +181,4 @@
 
 </body>
 </html>
+
