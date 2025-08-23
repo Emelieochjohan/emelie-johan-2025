@@ -26,24 +26,32 @@
     }
 
     /* Fullscreen video */
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      background-color: black; /* fallback om videon inte laddas */
-    }
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
 
-    .video-container video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* täcker hela ytan */
+  background-color: black;
+}
+
+/* Gör videon något högre på små mobiler */
+@media (max-width: 768px) {
+  .video-container {
+    height: 100vh; /* fortfarande full höjd */
+  }
+}
+
 
     /* Knapp för ljud */
     .unmute-btn {
@@ -140,14 +148,18 @@
 </head>
 <body>
 
-  <!-- Videon -->
-  <div class="video-container">
-    <video id="myVideo" autoplay muted playsinline>
-      <source src="SOUND_ON_DESKTOP.mp4" type="video/mp4">
-      Din webbläsare stöder inte video.
-    </video>
-    <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
-  </div>
+<!-- Videon -->
+<div class="video-container">
+  <video id="myVideo" autoplay muted playsinline loop>
+    <!-- Desktop-video -->
+    <source src="SOUND_ON_2.mp4" type="video/mp4" media="(min-width: 769px)">
+    <!-- Mobil-video -->
+    <source src="SOUND_ON_MOBILE.mp4" type="video/mp4" media="(max-width: 768px)">
+    Din webbläsare stöder inte video.
+  </video>
+  <button class="unmute-btn" onclick="enableSound()">🔊 Slå på ljud</button>
+</div>
+
 
   <!-- Brevbild under videon -->
   <div class="fullwidth-image">
@@ -183,6 +195,7 @@
 
 </body>
 </html>
+
 
 
 
