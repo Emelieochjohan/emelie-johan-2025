@@ -67,13 +67,20 @@
       padding: 0;
     }
 
-    .brevbanner {
-      display: block;
-      width: 70%;        /* 🔹 30% mindre */
-      max-width: 900px;  /* 🔹 aldrig större än 900px på desktop */
-      height: auto;
-      margin: 0 auto;
-    }
+.brevbanner {
+  display: block;
+  width: 60%;          /* 🔹 Standard = desktop */
+  height: auto;
+  margin: 30px auto;
+}
+
+/* 🔹 För mobiler */
+@media (max-width: 768px) {
+  .brevbanner {
+    width: 90%;        /* 🔹 Mer bredd på mobil */
+  }
+}
+
 
     /* Text content */
     .content {
@@ -176,3 +183,4 @@
 
 </body>
 </html>
+
